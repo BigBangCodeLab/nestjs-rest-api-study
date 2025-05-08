@@ -243,6 +243,7 @@ Numeric code for response status (e.g., 200 OK, 404 Not Found). Override with `@
 ```typescript
 @Post() @HttpCode(201) create() { return 'Created'; }
 ```
+[Learn about status code:  https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)  
 
 ## DTO (Data Transfer Object)
 TypeScript class defining data shape for validation. Use with `class-validator`.  
