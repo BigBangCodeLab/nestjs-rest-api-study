@@ -259,6 +259,23 @@ class CreateUserDto {
 ---
 
 
+## What is ORM?
+
+ORM (Object-Relational Mapping) acts as a translator between the objects in your code and the tables in your database. Instead of writing raw SQL, you interact with your database using object-oriented methods.
+
+## TypeORM in NestJS
+
+TypeORM is a powerful ORM specifically for TypeScript and JavaScript, and `@nestjs/typeorm` provides seamless integration within the NestJS framework.
+
+**Key benefits of using `@nestjs/typeorm`:**
+
+* **Simplified Database Interaction:** Define database tables as TypeScript classes (entities).
+* **Easy Data Access:** Use TypeORM repositories to perform database operations (read, write, update, delete) without writing SQL.
+* **NestJS Integration:** `@nestjs/typeorm` handles database connection management and makes it easy to inject repositories into your NestJS services.
+
+In short, TypeORM in NestJS streamlines database interactions in your backend applications, making your code cleaner and more maintainable.
+
+
 ## 🔁 CRUD Operations with PostgreSQL
 
 CRUD stands for:
