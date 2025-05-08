@@ -438,6 +438,10 @@ nest generate service users
 
 ---
 
+Swagger API Documentation Setup (NestJS)
+
+[https://docs.nestjs.com/openapi/introduction](https://docs.nestjs.com/openapi/introduction)
+
 ### 6️⃣ Setup TypeORM Entity for Users
 
 Create a `user.entity.ts` file with fields like name, email, etc.
