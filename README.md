@@ -357,6 +357,77 @@ Then update `app.module.ts` to connect to PostgreSQL.
 
 ---
 
+This guide will walk you through setting up PostgreSQL on Windows, creating a database, and configuring your `.env` file for your NestJS project.
+
+## Step 1: Install PostgreSQL on Windows
+
+1.  **Navigate to the PostgreSQL Downloads page:** Go to the official PostgreSQL website ([https://www.postgresql.org/download/windows/](https://www.postgresql.org/download/windows/)).
+2.  **Download the Installer:** Click on the link for the latest stable version of PostgreSQL for Windows. You'll likely be directed to the EnterpriseDB (EDB) website, which provides the installer. Download the appropriate installer for your system architecture (usually x64).
+3.  **Run the Installer:** Once the download is complete, double-click the `.exe` file to start the PostgreSQL Setup Wizard.
+4.  **Follow the Setup Wizard:**
+    * Click "Next" on the welcome screen.
+    * Choose an installation directory (the default is usually fine) and click "Next".
+    * Select the components to install. At a minimum, ensure that "PostgreSQL Server," "pgAdmin 4," "Stack Builder," and "Command Line Tools" are selected. Click "Next".
+    * Choose a data directory (the default is usually fine) and click "Next".
+    * **Set the Password for the `postgres` User:** This is a crucial step. Enter a strong password for the default PostgreSQL superuser (`postgres`). Remember this password! Click "Next".
+    * Choose a port number for the PostgreSQL server (the default is `5432`). Click "Next".
+    * Select the default locale (usually "Default locale") and click "Next".
+    * Review the pre-installation summary and click "Next" to begin the installation.
+5.  **Wait for Installation:** The installation process may take a few minutes.
+6.  **Stack Builder (Optional):** After the main installation, the Setup Wizard might ask if you want to launch Stack Builder. Stack Builder can help you install additional PostgreSQL tools and drivers. You can choose to do this now or later. For basic NestJS development, you might not need to install anything through Stack Builder immediately.
+7.  **Finish:** Click "Finish" to close the Setup Wizard.
+
+## Step 2: Create a Database
+
+You can create a database using either the command line tools or the pgAdmin graphical interface.
+
+**Method 1: Using Command Line Tools (psql)**
+
+1.  **Open Command Prompt:** Press `Win + R`, type `cmd`, and press Enter.
+2.  **Connect to PostgreSQL:** Type the following command and press Enter:
+    ```bash
+    psql -U postgres
+    ```
+    You will be prompted for the password you set during installation for the `postgres` user. Enter it and press Enter.
+3.  **Create the Database:** Once connected to the `postgres` prompt (`postgres=#`), use the following command to create your database (replace `your_database_name` with your desired name, e.g., `study_user_app`):
+    ```sql
+    CREATE DATABASE your_database_name;
+    ```
+    For your project, you would use:
+    ```sql
+    CREATE DATABASE study_user_app;
+    ```
+4.  **Exit psql:** Type `\q` and press Enter to exit the PostgreSQL command line.
+
+**Method 2: Using pgAdmin**
+
+1.  **Open pgAdmin 4:** Search for "pgAdmin 4" in the Windows Start Menu and open the application.
+2.  **Connect to Your Server:** In the "Servers" panel on the left, you should see your PostgreSQL server listed (usually under "PostgreSQL 1x"). If it's not connected, right-click on the server and choose "Connect Server...". Enter the password for the `postgres` user if prompted.
+3.  **Create a New Database:**
+    * Right-click on the "Databases" node under your server.
+    * Select "Create" -> "Database...".
+    * In the "New Database" dialog, enter the desired database name in the "Database" field (e.g., `study_user_app`).
+    * You can leave the other settings as default for now.
+    * Click "Save".
+
+## Step 3: Create a `.env` File
+
+In the root directory of your NestJS project, create a new file named `.env`. This file will store your environment variables, including your database connection details and the port your application will run on.
+
+Open the `.env` file in a text editor and add the following information, replacing the placeholders with your actual values:
+
+```dotenv
+DB_TYPE=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=study_user_app
+DB_PASSWORD=8520
+DB_DATABASE=study_user_app
+
+PORT=3001
+```
+----
+
 ### 5️⃣ Create a Module for Users
 
 ```bash
