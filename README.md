@@ -141,6 +141,122 @@ export class UserController {
 
 ---
 
+---
+
+## 🏷️ What is a Decorator in TypeScript / NestJS?
+
+A **decorator** is a special **function that adds extra behavior or information** to classes, methods, properties, or parameters.
+
+In NestJS, decorators are used to **define routes, inject services, bind metadata, and control behavior** — all in a clean, readable way.
+
+---
+
+### 🧠 Think of It Like a Tag or Label
+
+You place a **`@decorator`** above something (like a class or method), and that "tag" tells NestJS to treat it in a special way.
+
+---
+
+### 🔧 Common Decorators in NestJS:
+
+| Decorator       | Use Case                                       |
+|------------------|------------------------------------------------|
+| `@Controller()`  | Marks a class as a controller (handles routes) |
+| `@Get()`         | Maps a method to a GET HTTP request            |
+| `@Post()`        | Maps a method to a POST HTTP request           |
+| `@Injectable()`  | Marks a class as a service that can be injected |
+| `@Param()`       | Gets a route parameter from the URL            |
+| `@Body()`        | Gets the body of a POST request                |
+| `@Query()`       | Gets query parameters from the URL             |
+
+---
+
+### 🔁 Example:
+
+```ts
+@Controller('users')
+export class UserController {
+  constructor(private userService: UserService) {}
+
+  @Get()
+  getUsers() {
+    return this.userService.findAll();
+  }
+
+  @Post()
+  createUser(@Body() userData: CreateUserDto) {
+    return this.userService.create(userData);
+  }
+}
+```
+
+---
+
+
+Quick, beginner-friendly explanations of key NestJS concepts for fast learners.
+
+## Body
+Data sent in the HTTP request's payload (e.g., JSON in POST). Use `@Body()` to access it.  
+**Example**:  
+```typescript
+@Post() create(@Body() data: any) { return data; }
+```
+
+## Query
+Key-value pairs in the URL after `?` (e.g., `?name=John`). Use `@Query()` to extract them.  
+**Example**:  
+```typescript
+@Get() find(@Query('name') name: string) { return name; }
+```
+
+## Param
+Dynamic URL path parts (e.g., `/users/:id`). Use `@Param()` to capture them.  
+**Example**:  
+```typescript
+@Get(':id') getById(@Param('id') id: string) { return id; }
+```
+
+## Request
+The full HTTP request object (headers, body, etc.). Use `@Req()`, but prefer specific decorators.  
+**Example**:  
+```typescript
+@Get() getRequest(@Req() req) { return req.headers; }
+```
+
+## Response
+The HTTP response object. Use `@Res()` for manual control, but NestJS handles it automatically.  
+**Example**:  
+```typescript
+@Get() send(@Res() res) { res.status(200).send('Hello'); }
+```
+
+## Handlers
+Controller methods handling HTTP requests. Use decorators like `@Get()`, `@Post()`.  
+**Example**:  
+```typescript
+@Get('hello') getHello() { return 'Hello World'; }
+```
+
+## Status Code
+Numeric code for response status (e.g., 200 OK, 404 Not Found). Override with `@HttpCode()`.  
+**Example**:  
+```typescript
+@Post() @HttpCode(201) create() { return 'Created'; }
+```
+
+## DTO (Data Transfer Object)
+TypeScript class defining data shape for validation. Use with `class-validator`.  
+**Example**:  
+```typescript
+class CreateUserDto {
+  @IsString() name: string;
+  @IsInt() age: number;
+}
+@Post() create(@Body() dto: CreateUserDto) { return dto; }
+```
+
+---
+
 
 ## 🔁 CRUD Operations with PostgreSQL
 
