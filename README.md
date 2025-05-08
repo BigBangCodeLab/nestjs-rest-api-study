@@ -37,6 +37,48 @@ With a REST API, we can:
 
 ---
 
+## 🧠 Extra Knowledge for Students
+
+### ✅ What is Node.js?
+
+**Node.js** is a runtime environment that lets you run JavaScript outside the browser — mainly on servers.  
+It helps you build **server-side applications**, like APIs or backends.
+
+🧠 Think of Node.js as the engine that runs JavaScript on your computer like how a browser does, but without the browser.
+
+---
+
+### ✅ What is npm?
+
+**npm** stands for **Node Package Manager**.  
+It helps you **install and manage libraries** (also called packages) in your Node.js projects.
+
+🛠 Example:  
+You can run `npm install express` to add the Express.js framework to your project.
+
+---
+
+### ✅ What is a Framework?
+
+A **framework** is a pre-built structure or toolkit for building software faster and in an organized way.  
+It gives you **rules, patterns, and ready-made tools** so you don’t start from scratch every time.
+
+🧱 Analogy:  
+If programming is building a house, a framework is like a house-building kit with instructions and pre-made parts.
+
+---
+
+### ✅ What is NestJS?
+
+**NestJS** is a **backend framework** built with and for **Node.js**.  
+It uses **TypeScript** and helps you build **scalable, modular REST APIs** easily.
+
+🌟 Why use NestJS?
+- Clean and organized code
+- Built-in support for dependency injection
+- Uses decorators (like `@Get()`, `@Post()`) like Angular
+- Works well with databases like PostgreSQL
+
 ## 🔁 CRUD Operations with PostgreSQL
 
 CRUD stands for:
