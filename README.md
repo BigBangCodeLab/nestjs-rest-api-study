@@ -79,6 +79,69 @@ It uses **TypeScript** and helps you build **scalable, modular REST APIs** easil
 - Uses decorators (like `@Get()`, `@Post()`) like Angular
 - Works well with databases like PostgreSQL
 
+
+---
+
+## 🔄 What is Dependency Injection (DI) in NestJS?
+
+In NestJS, **Dependency Injection (DI)** means you **don’t create objects manually** inside your class. Instead, **NestJS creates them for you** and gives them to you **when you need them**.
+
+---
+
+### 🔧 Think of NestJS Like a Factory with a Manager
+
+- When your app starts, **NestJS's DI system acts like a manager**.
+- This manager goes through all your modules and **creates one instance of each service, controller, etc.**
+- These are stored **in a container (a kind of internal storage)**.
+
+---
+
+### 🧠 Then What Happens?
+
+Whenever any class (like a Controller or another Service) **needs a service**, it **asks the DI manager**, like:
+
+> “Hey, I need `UserService`!”
+
+And the manager replies:
+
+> “Here you go! I already have that instance ready. Use it.”
+
+---
+
+### ✅ Why is This Good?
+
+- ✅ No duplicate objects — only one instance is created (singleton by default)
+- ✅ Faster development — NestJS handles the object creation
+- ✅ Clean code — no more `new SomeService()` inside your classes
+- ✅ Easier testing — you can replace the real object with a fake one during testing
+
+---
+
+### 🔁 Example in NestJS
+
+```ts
+@Injectable()
+export class UserService {
+  findAll() {
+    return ['John', 'Jane'];
+  }
+}
+```
+
+```ts
+@Controller('users')
+export class UserController {
+  constructor(private userService: UserService) {} // DI manager gives this
+}
+```
+
+- You didn’t write `new UserService()`
+- NestJS created the instance when starting the app
+- Then it **automatically gave** it to the controller
+
+---
+
+
 ## 🔁 CRUD Operations with PostgreSQL
 
 CRUD stands for:
